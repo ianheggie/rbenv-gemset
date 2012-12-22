@@ -8,8 +8,8 @@ if [ -n "$RBENV_GEMSETS" ]; then
 elif [ -n "$gemset_file" ]; then
   RBENV_GEMSETS="global"
   specified_gemset=$(cat $gemset_file)
-  if [[ $specified_gemset != "global" ]]; then
-    RBENV_GEMSETS="$specified_gemset $RBENV_GEMSETS"
+  if [[ $specified_gemset != "global" && $specified_gemset != "" ]]; then
+    RBENV_GEMSETS="$specified_gemset"
   fi
   echo $RBENV_GEMSETS
 else
