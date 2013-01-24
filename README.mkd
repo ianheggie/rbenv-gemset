@@ -41,6 +41,17 @@ as there is an `.rbenv-gemsets` file at or above the current directory.
 Alternatively, you can set the RBENV_GEMSET_FILE environment variable to the
 absolute path of the gemset file.
 
+This plugin also adds the following sub commands to rbenv:
+
+* `rbenv gemset` - lists available commands
+* `rbenv gemset active` - list active gemsets
+* `rbenv gemset create [version] [gemset]` - create the specified gemset under the specified rbenv version
+* `rbenv gemset delete [version] [gemset]` - delete  the specified gemset under the specified rbenv version
+* `rbenv gemset file` - lists the active .rbenv-gemsets
+* `rbenv gemset list` - list available gemsets across all rbenv versions
+* `rbenv gemset version` - lists the version
+
+For full documentation, see: https://github.com/jamis/rbenv-gemset#readme
 
 ## License
 
