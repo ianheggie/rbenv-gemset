@@ -5,7 +5,6 @@ allows you to use "gemsets", sandboxed collections of gems. This lets you have
 multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
-
 ## Installation
 
 ### Homebrew
@@ -30,16 +29,15 @@ names of the gemsets you want to use in it, separated by whitespace. The first
 gemset in the list will be the primary gemset, where new gems will be
 installed.
 
-    $ echo my-gemset > .rbenv-gemsets
+    $ rbenv gemset active "my-gemset 2nd-gemset"
 
 Now, all commands involving gems will use the gemsets you specified.
 
-The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
-the current directory, as well as in all ancestor directories, so as long
-as there is an `.rbenv-gemsets` file at or above the current directory.
-
-Alternatively, you can set the RBENV_GEMSET_FILE environment variable to the
-absolute path of the gemset file.
+The gemset plugin causes rbenv to search for the first `.rbenv-gemsets` file 
+starting at the current directory and working back up the ancestor directories
+to determine what gemsets are active.
+If no `.rbenv-gemsets` file is found then the default environment for that
+version is used.
 
 This plugin also adds the following sub commands to rbenv:
 
@@ -51,15 +49,37 @@ This plugin also adds the following sub commands to rbenv:
 * `rbenv gemset list` - Show all available gemsets 
 * `rbenv gemset version` - Show the rbenv-gemset version 
 
-Automcomplete is provided for bash shell (use [Tab] to show available versions / gemsets)
-
 For full documentation, see: https://github.com/jamis/rbenv-gemset#readme
+
+## Special gemsets
+
+The "global" gemset is always appended to the end of the list of gemsets 
+and is typically used for gems that are common across all projects.
+Note: this is a different location than the default.
+
+The "default" gemset will include the path/s that would be used if no `.rbenv-gemsets` file had been found.
+Note the default gem path for system may include multiple directories.
+
+## Environment
+
+The following environment variables are used by this plugin:
+
+* RBENV\_GEMSET\_SYSTEM\_ROOT - Directory that system gemsets are held in. You may override the default location (/usr/local/share/ruby-gemsets)
+
+The following environment variables are set by the plugin 
+
+* GEM\_HOME - Set to the path for the first gemset if a `.rbenv-gemsets` file was found
+* GEM\_PATH - Set to the list of gemset paths if a `.rbenv-gemsets` file was found
+* RBENV\_GEMSETS - Lists the active gemsets (blank otherwise)
+
+You can use the `rbenv gem home` command to see the gem environment variables.
+
+Automcomplete is provided for bash shell (use [Tab] to show available versions / gemsets).
 
 ## License
 
 This code is placed in the public domain by the author, Jamis Buck. Use it as
 you wish. Please prefer good over evil.
-
 
 [rbenv]: http://github.com/sstephenson/rbenv
 [homebrew]: http://mxcl.github.com/homebrew/
