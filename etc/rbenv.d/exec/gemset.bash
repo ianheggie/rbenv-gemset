@@ -1,21 +1,21 @@
-unset GEM_HOME GEM_PATH
-
 if [ "$(rbenv-version-name)" = "system" ]; then
   RBENV_GEMSET_ROOT="$RBENV_GEMSET_SYSTEM_ROOT"
 else
   RBENV_GEMSET_ROOT="$(rbenv-prefix)/gemsets"
 fi
 
-for gemset in $(rbenv-gemset active 2>/dev/null); do
+export RBENV_GEMSETS=$(rbenv-gemset active 2>/dev/null)
+
+for gemset in $RBENV_GEMSETS; do
   path="${RBENV_GEMSET_ROOT}/$gemset"
-  if [ -z "$GEM_HOME" ]; then
-    GEM_HOME="$path"
-    GEM_PATH="$path"
+  if [ -z "$gem_home" ]; then
+    gem_home="$path"
+    gem_path="$path"
   else
-    GEM_PATH="$GEM_PATH:$path"
+    gem_path="$gem_path:$path"
   fi
 done
 
-if [ -n "$GEM_HOME" ]; then
-  export GEM_HOME GEM_PATH
+if [ -n "$gem_home" ]; then
+  export GEM_HOME=$gem_home GEM_PATH=$gem_path
 fi
