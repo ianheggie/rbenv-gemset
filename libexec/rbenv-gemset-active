@@ -1,6 +1,28 @@
 #!/usr/bin/env bash
 set -e
 
+# Provide rbenv completions
+if [ "$1" = "--complete" ]; then
+  echo --unset
+  echo global
+  shopt -s nullglob
+  gemsets=($(rbenv prefix)/gemsets/*)
+  shopt -u nullglob
+
+  if [ -n "$gemsets" ]; then
+    for gemset in ${gemsets[@]}; do
+      echo "${gemset##*/}"
+    done
+  fi
+  exit
+fi
+
+if [ "$1" = "--unset" ]; then
+  exec rm -f .rbenv-gemsets
+elif [ -n "$1" ]; then
+  exec echo "$1" > .rbenv-gemsets
+fi
+
 gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
 
 if [ -n "$RBENV_GEMSETS" ]; then
@@ -16,5 +38,3 @@ else
   echo "no active gemsets" >&2
   exit 1
 fi
-
-

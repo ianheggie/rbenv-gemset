@@ -7,7 +7,9 @@ for version in $(rbenv versions --bare); do
   shopt -u nullglob
 
   if [ -n "$gemsets" ]; then
-    echo "$version:"
+    if [ "$1" != "--bare" ]; then
+      echo "$version:"
+    fi
     for gemset in ${gemsets[@]}; do
       echo "  ${gemset##*/}"
     done

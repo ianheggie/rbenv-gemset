@@ -44,12 +44,14 @@ absolute path of the gemset file.
 This plugin also adds the following sub commands to rbenv:
 
 * `rbenv gemset` - lists available commands
-* `rbenv gemset active` - list active gemsets
-* `rbenv gemset create [version] [gemset]` - create the specified gemset under the specified rbenv version
-* `rbenv gemset delete [version] [gemset]` - delete  the specified gemset under the specified rbenv version
-* `rbenv gemset file` - lists the active .rbenv-gemsets
-* `rbenv gemset list` - list available gemsets across all rbenv versions
-* `rbenv gemset version` - lists the version
+* `rbenv gemset active [ <gemset> ]` - Set or show active gemsets
+* `rbenv gemset create <version> <gemset>` - Create the specified gemset under the specified rbenv version
+* `rbenv gemset delete <version> <gemset>` - Delete  the specified gemset under the specified rbenv version
+* `rbenv gemset file` - Display the path of the active .rbenv-gemsets
+* `rbenv gemset list` - Show all available gemsets 
+* `rbenv gemset version` - Show the rbenv-gemset version 
+
+Automcomplete is provided for bash shell (use [Tab] to show available versions / gemsets)
 
 For full documentation, see: https://github.com/jamis/rbenv-gemset#readme
 
