@@ -1,3 +1,6 @@
+if [ -z "$RBENV_GEMSET_SYSTEM_ROOT" ]; then
+  export RBENV_GEMSET_SYSTEM_ROOT="/usr/local/share/ruby-gemsets"
+fi
 if [ "$(rbenv-version-name)" = "system" ]; then
   RBENV_GEMSET_ROOT="$RBENV_GEMSET_SYSTEM_ROOT"
 else

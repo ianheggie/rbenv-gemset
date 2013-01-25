@@ -5,6 +5,7 @@ set -e
 if [ "$1" = "--complete" ]; then
   echo --unset
   echo global
+  echo default
   shopt -s nullglob
   gemsets=($(rbenv prefix)/gemsets/*)
   shopt -u nullglob
