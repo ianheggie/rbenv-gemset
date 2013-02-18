@@ -36,6 +36,6 @@ elif [ -n "$gemset_file" ]; then
   fi
   echo $RBENV_GEMSETS
 else
-  echo "no active gemsets" >&2
+  echo "no active gemsets (reverting to default)" >&2
   exit 1
 fi

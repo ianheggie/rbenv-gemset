@@ -53,11 +53,10 @@ For full documentation, see: https://github.com/jamis/rbenv-gemset#readme
 
 ## Special gemsets
 
-The "global" gemset is always appended to the end of the list of gemsets 
-and is typically used for gems that are common across all projects.
-Note: this is a different location than the default.
+The "global" gemset is appended to the end of the list of gemsets 
+if it exists.
 
-The "default" gemset will include the path/s that would be used if no `.rbenv-gemsets` file had been found.
+The "default" gemset includes the path/s that would be used if no `.rbenv-gemsets` file had been found.
 Note the default gem path for system may include multiple directories.
 
 ## Environment
